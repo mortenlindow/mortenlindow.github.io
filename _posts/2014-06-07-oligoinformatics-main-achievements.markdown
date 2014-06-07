@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Oligoinformatics - brief summary og achievements"
+title:  "Oligoinformatics - brief summary and achievements"
 date:   2014-06-07 
 categories: blog
 tags: oligoinformatics
