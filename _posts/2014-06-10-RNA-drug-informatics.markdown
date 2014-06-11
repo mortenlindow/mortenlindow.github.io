@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "RNA Drug Informatics - 90 lecture with questions"
-date:   2014-05-13 
+date:   2014-06-10 
 categories: talk
 tags: lecture
 ---
