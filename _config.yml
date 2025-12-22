@@ -19,7 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   A simple website by and about Morten Lindow and his professional life.
 github_username: mortenlindow
 linkedin_username: mlindow
-minimal_mistakes_skin: default
+skin: default
 search: true
 
 # Build settings
