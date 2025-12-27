@@ -1,0 +1,56 @@
+---
+title: "Research Strategy"
+author: Morten Lindow
+format: html
+---
+
+As a leader for the CPDSE, my main (80%) focus will is on the development of the center as a whole and its mission. This should remain the leader’s main priority for the duration of the center. However as the center becomes robust, evolves and co-leadership truly kicks in (see leadership principles), more effort can be shifted into my professorial research activities.
+
+I am considering two avenues of research:
+
+1.  Enabling Oligonucleotide drug discovery through data and modelling (this document below)
+2.  Drug discovery process modelling and strategy (to be further elaborated)
+
+# Enabling Open Oligonucleotide Drug Discovery Through Data and Modelling.
+
+The research strategy in the first years will focus on data curation, machine learning, community building, simulations. Several of the envisioned projects will have outcomes both in terms of uncovering basic science and in terms of producing tools, frameworks and models that can be used for teaching and strengthening the oligonucleotide community.
+
+The draft research strategy will be further evolved together with current collaborators, future collaborators inside and outside of the department, and evolving opportunities for grants.
+
+## Horizon 1 (1-2 yrs): Establishment phase.
+
+> Build on existing strengths, high probability of success.
+
+OpenOligoLake - curate and organize foundational oligo discovery data, systems and code to enable oligonucleotide based drugs. Requirement: own students, postdocs for coding and data mining and curation. Existing network to consolidate already public data and code Building on: center resources on data and code orchestration, increment on top current work.
+
+OpenOligoFeat - featurization and ML for learning and mapping between structure and function for oligonucleotides. Apply to predict safety, activity and stability on public data sets. Requirement: own students, postdocs for coding and data curation. Collaboration on advanced machine learning. Building on: experience with hepatotox, acute neurotox and activity predictors, public datasets (from OpenOligoLake). Base can be quickly and independently established, then expand through Industry and tech collaborations, e.g. Roche, Novo, Silence, Abzu.ai
+
+OpenOligoCommunity: Activate and expand existing networks to build pre-competitive partnerships to enable and accelerate oligonucleotide drugs. Pursue national and EU funding. I have an existing network interested in this, but my current Roche anchoring makes it more difficult. A not-for-profit anchoring provides a basis for catalyzing open sharing and diverse funding to facilitate public or joint ownership models or open source in the precompetitve spaces. Requirement: outreach and ecosystem building. Some leading to joint grant applications
+
+OpenNABMPKPD - mechanistic systems pharmacology models for nucleic acid based medicines
+
+Expanding from our ASO-model with PK and into other NABMs. Compartment-models for the tissues, for crossing barriers, for entering cells, for molecular mode of action, etc. Contrary to standard PKPD models used in drug development, this system of models would be more detailed and mechanistic including cellular uptake, stability of both pharmacophore and targeting system, molecular mechanisms of action (enzymes for oligos, transcription, translation etc for AAVs). We will not be able to estimate all parameters from data, but having a model (with a simple graphical interface) will allow us to simulate the effect of changes in each step, which would lead to the following benefits: better understanding of what to optimize. What matters? What doesn’t? Are we talking about the same things? Framework to become quantitative and more precise. Simulations used for teaching. Framework to simulate and therefore better plan wetlab experiments in NABM. Planning dosing schemes for animal and human studies. Requirements: own students, collaboration on math for dynamic models if not brought by students
+
+## Horizon 2 (2-5yrs): Expansion phase.
+
+> Requires significant new know-how and capabilities either in the group or through tight collaborations. Additional funding necessary and expected.
+
+Design-build-test-learn loops. To accelerate learning about oligonucleotide drugs it is essential to have fast learning loops between molecule design, synthesis, testing and learning. In this phase this should be established either through own lab footprint or through collaborations and vendors/CROs.
+
+OpenTranscriptomeFoundationModel - Foundation models for the transcriptome. Given an oligonucleotide chemical structure, what are the predicted transcriptome changes? And given a desired transcriptome change (e.g. sick to healthy) what oligonucleotides will induce change? This is almost the holy grail of RNATherapy data science.
+
+Requirement: Development and connection to expertise on RNA-foundation models, connection to oligo perturbed transcriptome data sets (mined through OpenOligoLake or produced through collaboration). Expected technological evolution in the field, including use of RNASeq-methods (e.g DrugSeq or BRB-Seq) in early screening campaigns for oligonucleotides drugs.
+
+OpenDiscoveryCascadeModel\
+One can define the drug discovery business process of lead identification and optimization as a series of operations that attempts to poll the in human properties (e.g efficacy, PK and safety) of sets of molecules, which may be expanded along the way. Such operations are often called things like ‘in silico predictions’, ‘screens’, ‘assays’, ‘animal studies’ etc. Each operation carries a cost in terms of time and money; and one can broadly define an operation’s predictive validity as its ability to predict the outcome of a later, often more expensive, operation. A cascade is a set of connected operations, in series or in parallel that eventually leads to abandoning of the discovery project or entry into human trials. It is desirable to optimize a cascade that minimizes time and cost while maximising the combined predictive validity, i.e. the chance that the clinical lead molecule will be successful in humans.
+
+A fundamental problem in the drug discovery industry is that cascades are almost always designed by qualitative tradition, opinions and assumptions. Real discovery cascades are slow (2+ yrs) and involve many different specialists, meaning that holistic systems learning is very slow and difficult to implement. In the OpenDiscoveryCascadeModel-project we aim to create a stochastic graphical model abstraction of the discovery cascades. Such a model will allow (1) a more rational cascade design and (2) can be used as a teaching tool, e.g by turning it into a learning game with ‘engine building mechanics’ that can be used in university classes as well with project and strategy teams in the pharma drug discovery business.
+
+Requirements: 2 students/post-docs, connect to graphical models expertise, game and workshop design expertise; industry connections for examples, parameter estimation and benefit realization.
+
+Builds on: experience with 30+ cascades that we not always that rationally designed, recreational game design
+
+## Horizon 3 (5+ yrs): Disruptive application to the benefit of underserved patients
+
+OpenOligoTreatment:\
+The expected overall maturation of the field over the next 5 years, complemented with successful research above (more predictive algorithms and more predictive and cost-effective cascades), my assumption is that the time, cost and reliability of discovering new oligonucleotide drug candidates can be significantly reduced compared to now. The vision is that the Lindow-group at that point will be able to play a key role in consortia that can quickly develop very specialized oligonucleotide drugs for rare diseases or diseases in areas that commercial pharma companies do not pursue.

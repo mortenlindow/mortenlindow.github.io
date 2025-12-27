@@ -1,0 +1,32 @@
+---
+title: "Leadership and Teaching"
+format: html
+author: Morten Lindow
+---
+
+![Figure: Morten’s little leadership model, (adapted from professional agile coach certification). The middle holds core principles that I strive towards to uphold in an organisation. The outer circle has the four roles that we need to consciously shift between, the top quadrants being one-to-many situations vs one-to-one on the bottom. Right is content neutral, while left is where you lead also a content expert. The bottom are the areas to which I can apply the roles. I try to remain conscious about when I apply each role. Trainer/teacher The trainer role is applied when I need to convey learning of content that I master to groups of people that do not yet](leadership-model.png)
+
+Whenever possible, I use a very interactive and involving type of training, which often surprises people in highly scientific parts of pharma, where the prevalent culture tends to be classical lecture or conference style. I am inspired by the very practical ideas of Bowman, Training from the BACK of the room. When I remember Bowman’s 4Cs (connect, concepts, concrete practice and conclusion) and Six Trumps, my training sessions are usually much better.
+
+Internal training has almost always followed a strategy of raising overall organizational and scientific maturity in order to develop each other to have more T-shaped skill sets (generalizing specialists, e.g biology AND data science or biology AND project leadership). In many instances training was procured from external suppliers.
+
+## Training 'Portfolio': 
+* Onboarding to the RNAHub (RNAHub Academy, 2022-2024): Constructed (with other senior colleagues) a small curriculum (approximately 3 x 2 hrs…not really enough) that attempts to bring all RNAHub members to basic level of oligonucleotide therapeutics knowledge (scientific mastery), ways we work and organize together (transformation), and our strategy and direction (business purpose). Onboarded a total of about 55 people. Evolved with feedback.
+
+* Internal training sessions at Roche Innovation Center Copenhagen on RNA Biology, basic data science and organizational topics. 
+
+* 2008-2018, industry guest lectures at the University of Copenhagen. 2-4 per year. Master and phd-level courses. Diverse topics spanning: general drug discovery, RNA therapeutics and bioinformatics in industry. 
+
+* From sequencing and computational analysis to RNA Drugs (KU 2012, 1 week summer course). Overbooked, full of practical exercises, well evaluated. 
+
+* Appointed examiner (censor, 2008-2018): bachelor and master theses (averaging about 4 per year), medicine, molecular biomed, human biology, bioinformatics. 5 times examiner on written pharmacology exams at Aarhus Uni. RNA Biology, * High-throughput biology (KU, 2007-2013), yearly lecture with an exercise Bioperl workshop, organiser and teacher, Biosys 2008
+
+* Introduction to Bioinformatics, 7.5 ECTS (2006-8, 2008 as guest lecturer), Course creator and one of two main teachers. Success with using lots of short computer exercises interspersed with concept lectures. 
+
+* Supported Professor Anders Krogh to create the early versions of the Master of Bioinformatics at University of Copenhagen (as phd-student 2002-2006). Teaching part of Biological Sequence Analysis and supervising many junior students. 
+
+## Facilitator
+
+I facilitate meetings and workshops with colleagues almost every day and often get positive feedback for a flexible, inclusive yet well-organized style that heightens energy and motivation, while maintaining progress and accountability. When needed, I hire or mobilize others to facilitate, so I can better contribute content. I encourage myself and others to employ methods from Liberating Structures.
+
+

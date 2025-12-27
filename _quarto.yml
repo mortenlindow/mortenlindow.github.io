@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Morten Lindow"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research-strategy.qmd
+        text: Research
+      - href: leadership-teaching.qmd
+        text: Leadership & Teaching
+      
+        
+        
+  page-footer: 
+    left: "Copyright 2026, Morten Lindow" 
+    right: 
+      - icon: github
+        href: https://github.com/mortenlindow
+      - icon: linkedin 
+        href: https://linkedin.com/in/mlindow
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
