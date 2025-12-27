@@ -12,8 +12,6 @@ website:
         text: Research
       - href: leadership-teaching.qmd
         text: Leadership & Teaching
-      
-        
         
   page-footer: 
     left: "Copyright 2026, Morten Lindow" 

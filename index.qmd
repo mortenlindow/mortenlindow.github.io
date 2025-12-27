@@ -5,7 +5,7 @@ number-sections: true
 
 ![Morten Lindow (photo credit Lisbeth Lassen)](Morten_Lindow.jpg)
 
-Since 2025 Morten is the leader of the [Center for Pharmaceutical Data Science Education](https://cpdse.dk) and professor at the [Deparment for Drug Design and Pharmacology at the University of Copenhagen](http://drug.ku.dk)
+Since 2025 Morten is the leader of the [Center for Pharmaceutical Data Science Education](https://cpdse.dk) and professor at the [Deparment for Drug Design and Pharmacology at the University of Copenhagen](http://drug.ku.dk). Read one of my pieces on the need for data science integration in pharma [here](https://www.linkedin.com/pulse/days-bridging-gone-now-full-integration-morten-lindow-xlczf/?trackingId=e8iHNR5eRpGgi6l2gO9B8g%3D%3D).
 
 This website is a slight adaptation of the job application that landed me this fantastic job. It is only sporadically updated. Please follow me on [LinkedIn](https://linkedin.com/in/mlindow) and the [CPDSE website](https://cpdse.dk) for news and updates.
 
@@ -34,7 +34,6 @@ Briefly about Morten:
 
 View full publication list on [Google Scholar](https://scholar.google.dk/citations?user=FCh7IpsAAAAJ&hl=da).
 
-
 # Data science, bioinformatics and their integration into biology and chemistry {#sec-data-science}
 
 -   Promoted and coached OligoLoop (2022-2024, sponsor, RNAHub) - a setup and team aiming for 2-week cycles from design of oligos, synthesis in small scale, screening in cells with RNASeq and learning from the data. Then iterate.
@@ -49,39 +48,38 @@ View full publication list on [Google Scholar](https://scholar.google.dk/citatio
 
 -   Bioinformatics group in Santaris (2008-2014, director): shift bioinformaticians from tool-builders and service providers to (co-) leaders of discovery projects.
 
-
 # Leadership: Design and co-leading progressive scientific organizations {#sec-org-dev-leadership}
 
-* Project Excellence and Innovation Office at Roche Innovation Center Copenhagen (2014-2018, director). Raising organizational project and innovation maturity (training, discipline, rhythms and rituals)
+-   Project Excellence and Innovation Office at Roche Innovation Center Copenhagen (2014-2018, director). Raising organizational project and innovation maturity (training, discipline, rhythms and rituals)
 
-* ReimagineOurContribution (2020-21, lead): a progressive project that changed performance management practices for a Roche business unit of 750 people: From extrinsic motivation and judgments (bonus, ratings) to intrinsic motivation (autonomy, purpose, mastery and belonging). Motto: from me to we.
+-   ReimagineOurContribution (2020-21, lead): a progressive project that changed performance management practices for a Roche business unit of 750 people: From extrinsic motivation and judgments (bonus, ratings) to intrinsic motivation (autonomy, purpose, mastery and belonging). Motto: from me to we.
 
 Corporate strategy and reorganizations:
 
-* RNA Therapeutics Research Strategy in Roche (2016, supportive lead). 
+-   RNA Therapeutics Research Strategy in Roche (2016, supportive lead).
 
-* RNA Molecule Strategy and Reorg in Roche (2018, supportive lead). Focus on core competences in Denmark
+-   RNA Molecule Strategy and Reorg in Roche (2018, supportive lead). Focus on core competences in Denmark
 
-* RNA Consolidation Strategy and Reorg (2022, supportive lead). Led to the closure of the Danish Roche site and consolidation of all activities in Basel. I led the transfer and rebuilding from Copenhagen to Basel in the RNAHub.
+-   RNA Consolidation Strategy and Reorg (2022, supportive lead). Led to the closure of the Danish Roche site and consolidation of all activities in Basel. I led the transfer and rebuilding from Copenhagen to Basel in the RNAHub.
 
-* RNAHub (2022-2024, lead), pioneering way of working across specialities never tried in Roche before. [Promo site of our RNAHub approach](https://www.roche.com/stories/best-of-both-worlds) 
+-   RNAHub (2022-2024, lead), pioneering way of working across specialities never tried in Roche before. [Promo site of our RNAHub approach](https://www.roche.com/stories/best-of-both-worlds)
 
 # Ecosystem and community {#sec-ecosystems-communities}
 
-* Nordic Nucleic Acid Based Medicine Industry Network (2020-, founder and main driver). Unites the growing Danish Industry ecosystem on RNA and Gene therapy. Just had our 6th and largest meeting at BII.
+-   Nordic Nucleic Acid Based Medicine Industry Network (2020-, founder and main driver). Unites the growing Danish Industry ecosystem on RNA and Gene therapy. Just had our 6th and largest meeting at BII.
 
-* Beers data and drugs. Informal after work gatherings of pharma and tech professionals (2020-2023, co-founder). One event at Roche Innovation Center Copenhagen, 3 events at Abzu.ai. 
-* Leading roles in 4 industry-academia grants from Højteknologifonden and Innovationsfonden.
+-   Beers data and drugs. Informal after work gatherings of pharma and tech professionals (2020-2023, co-founder). One event at Roche Innovation Center Copenhagen, 3 events at Abzu.ai.
 
-* Advisory board roles at NextProd and RNALeaders-conference
+-   Leading roles in 4 industry-academia grants from Højteknologifonden and Innovationsfonden.
 
-* Employer and industry board for at Uni Copenhagen: Humanbiology education, Biomedical Institute (BMI) (2016-2022)
+-   Advisory board roles at NextProd and RNALeaders-conference
 
-* Oligonucleotide Safety Working Group (DIA), 2012-2014
+-   Employer and industry board for at Uni Copenhagen: Humanbiology education, Biomedical Institute (BMI) (2016-2022)
 
-* Pro-bono advisor for several start ups at BII (2023-).
+-   Oligonucleotide Safety Working Group (DIA), 2012-2014
 
-* Lindow Bioconsult (founder and consultant, 2012-2015)
+-   Pro-bono advisor for several start ups at BII (2023-).
 
-* Biogeeks bioinformatics consultancy collective (2008-2011)
+-   Lindow Bioconsult (founder and consultant, 2012-2015)
 
+-   Biogeeks bioinformatics consultancy collective (2008-2011)
