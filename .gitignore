@@ -5,3 +5,5 @@ Gemfile.lock
 .Rproj.user
 
 /.quarto/
+
+**/*.quarto_ipynb
