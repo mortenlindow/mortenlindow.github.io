@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drug Discovery: Concept Sorting Game</title>
+<style>
+  :root {
+    --stage1: #4f6fa0;
+    --stage2: #5a8a6e;
+    --stage3: #8a6e5a;
+    --stage4: #7a5a8a;
+    --stage5: #8a7a5a;
+    --stage6: #5a7a8a;
+    --bg: #f4f6fa;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --muted: #6b7280;
+    --correct: #22c55e;
+    --wrong: #ef4444;
+    --border: #e2e8f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── SCREENS ───────────────────────────────────────── */
+  .screen { display: none; flex-direction: column; min-height: 100vh; }
+  .screen.active { display: flex; }
+
+  /* ── WELCOME ─────────────────────────────────────────*/
+  #welcome {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  #welcome .logo {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  #welcome h1 {
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.5px;
+  }
+  #welcome .subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+  .chain-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .chain-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .chain-pill.s1 { color: #93c5fd; }
+  .chain-pill.s2 { color: #86efac; }
+  .chain-pill.s3 { color: #fbbf24; }
+  .chain-pill.s4 { color: #c4b5fd; }
+  .chain-pill.s5 { color: #fb923c; }
+  .chain-pill.s6 { color: #67e8f9; }
+
+  .btn {
+    display: inline-block;
+    background: white;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 50px;
+    padding: 0.85rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+  .btn.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .btn.secondary:hover { background: rgba(255,255,255,0.1); }
+  .btn.primary-colored {
+    background: #4f6fa0;
+    color: white;
+  }
+
+  /* ── GAME HEADER ─────────────────────────────────────*/
+  .game-header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .game-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .game-header .meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .progress-bar-wrap {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-top: 0.6rem;
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f6fa0, #5a8a6e);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .score-badge {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    border-radius: 20px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  /* ── ROUND INTRO ─────────────────────────────────────*/
+  .round-intro {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 1.5rem;
+  }
+  .round-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #4f6fa0;
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .round-intro h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .round-intro p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .hint-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.78rem;
+    color: #1e40af;
+    margin-top: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  /* ── CARD POOL ───────────────────────────────────────*/
+  .card-pool-wrap {
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-pool-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+  .card-pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    min-height: 48px;
+  }
+
+  /* ── ITEM CARD ───────────────────────────────────────*/
+  .item-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: grab;
+    user-select: none;
+    transition: all 0.15s;
+    line-height: 1.4;
+    max-width: 280px;
+    position: relative;
+  }
+  .item-card:hover {
+    border-color: #94a3b8;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+  .item-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+  }
+  .item-card.selected {
+    border-color: #4f6fa0;
+    background: #eff6ff;
+    box-shadow: 0 0 0 3px rgba(79,111,160,0.2);
+  }
+  .item-card.correct {
+    border-color: var(--correct);
+    background: #f0fdf4;
+    cursor: default;
+  }
+  .item-card.wrong {
+    border-color: var(--wrong);
+    background: #fef2f2;
+    animation: shake 0.35s ease;
+  }
+  .item-card.placed { display: none; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  /* ── STAGE COLUMNS ───────────────────────────────────*/
+  .stages-area {
+    padding: 1rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.8rem;
+  }
+  .stage-col {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .stage-col.drag-over {
+    border-color: #4f6fa0;
+    box-shadow: 0 0 0 3px rgba(79,111,160,0.15);
+  }
+  .stage-header {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .stage-num {
+    width: 20px; height: 20px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.68rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .stage-question {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    padding: 0.3rem 0.9rem 0.6rem;
+  }
+  .stage-drop-zone {
+    min-height: 80px;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .drop-placeholder {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    font-style: italic;
+  }
+  .stage-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    font-weight: 500;
+    position: relative;
+  }
+  .stage-card.correct { border-color: var(--correct); background: #f0fdf4; }
+  .stage-card.wrong { border-color: var(--wrong); background: #fef2f2; }
+  .stage-card .feedback-icon {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+  }
+  .stage-card .explanation {
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--border);
+    line-height: 1.4;
+    display: none;
+  }
+  .stage-card.correct .explanation,
+  .stage-card.wrong .explanation { display: block; }
+  .stage-card.wrong .explanation { color: #991b1b; }
+  .stage-card.correct .explanation { color: #166534; }
+
+  /* Stage colors */
+  .s1 .stage-header { background: var(--stage1); }
+  .s2 .stage-header { background: var(--stage2); }
+  .s3 .stage-header { background: var(--stage3); }
+  .s4 .stage-header { background: var(--stage4); }
+  .s5 .stage-header { background: var(--stage5); }
+  .s6 .stage-header { background: var(--stage6); }
+
+  /* ── ROUND COMPLETE ──────────────────────────────────*/
+  #round-complete {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: var(--bg);
+  }
+  .complete-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .complete-score {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #16a34a;
+    margin-bottom: 0.3rem;
+  }
+  .complete-msg {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 400px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+  .btn-row {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn.dark {
+    background: #1a1a2e;
+    color: white;
+  }
+
+  /* ── REFLECTION ──────────────────────────────────────*/
+  #reflection {
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    flex: 1;
+  }
+  .reflection-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .reflection-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .reflection-header p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .reflection-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .reflection-card .q-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #4f6fa0;
+    margin-bottom: 0.5rem;
+  }
+  .reflection-card .q-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  .reflection-card textarea {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    font-family: inherit;
+    color: var(--text);
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.15s;
+    line-height: 1.5;
+  }
+  .reflection-card textarea:focus {
+    outline: none;
+    border-color: #4f6fa0;
+    box-shadow: 0 0 0 3px rgba(79,111,160,0.1);
+  }
+  .reflection-card textarea::placeholder { color: #cbd5e1; }
+  .final-cta {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .final-cta .big-score {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1a1a2e;
+  }
+  .final-cta .score-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── TOAST ───────────────────────────────────────────*/
+  .toast {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1a1a2e;
+    color: white;
+    border-radius: 50px;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .toast.correct-toast { background: #16a34a; }
+  .toast.wrong-toast { background: #dc2626; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────*/
+  @media (max-width: 600px) {
+    .stages-area { grid-template-columns: 1fr; }
+    .game-header { flex-wrap: wrap; gap: 0.5rem; }
+    .item-card { max-width: 100%; width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────────── WELCOME ─────────────────────────── -->
+<div id="welcome" class="screen active">
+  <div class="logo">🔬</div>
+  <h1>Drug Discovery<br>Concept Sorting</h1>
+  <p class="subtitle">
+    Before the workshop, test your understanding of the drug discovery value chain —
+    which questions get asked, which data gets collected, and when.
+  </p>
+  <div class="chain-preview">
+    <span class="chain-pill s1">Disease Biology</span>
+    <span style="color:rgba(255,255,255,0.3); line-height:1.8;">→</span>
+    <span class="chain-pill s2">Target ID</span>
+    <span style="color:rgba(255,255,255,0.3); line-height:1.8;">→</span>
+    <span class="chain-pill s3">Modality Selection</span>
+    <span style="color:rgba(255,255,255,0.3); line-height:1.8;">→</span>
+    <span class="chain-pill s4">Lead ID</span>
+    <span style="color:rgba(255,255,255,0.3); line-height:1.8;">→</span>
+    <span class="chain-pill s5">Lead Optimisation</span>
+    <span style="color:rgba(255,255,255,0.3); line-height:1.8;">→</span>
+    <span class="chain-pill s6">Lead Characterisation</span>
+  </div>
+  <button class="btn" onclick="startRound(0)">Start Sorting →</button>
+  <p style="margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.4);">3 rounds · ~10 min · no account needed</p>
+</div>
+
+<!-- ─────────────── GAME SCREEN ──────────────────────── -->
+<div id="game-screen" class="screen">
+
+  <div class="game-header">
+    <div>
+      <div class="game-header h2" id="round-label">Round 1 of 3</div>
+      <div class="meta" id="round-meta">Sort the key questions into the right stage</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap;">
+      <div class="score-badge" id="score-display">0 / 0</div>
+      <div style="text-align:right;">
+        <div class="progress-bar-wrap" style="width:100px;">
+          <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="round-intro">
+    <div class="round-badge" id="round-badge">Round 1</div>
+    <h3 id="round-title">Sort the Key Questions</h3>
+    <p id="round-desc">Each question below is asked at one specific stage of drug discovery. Drag (or tap) each question to the stage where it belongs.</p>
+    <div class="hint-box" id="round-hint">
+      💡 <span>Tap a card to select it, then tap a stage column to place it. Or drag and drop on desktop.</span>
+    </div>
+  </div>
+
+  <div class="card-pool-wrap">
+    <div class="card-pool-label">Cards to sort</div>
+    <div class="card-pool" id="card-pool"></div>
+  </div>
+
+  <div class="stages-area" id="stages-area"></div>
+</div>
+
+<!-- ─────────────── ROUND COMPLETE ──────────────────── -->
+<div id="round-complete" class="screen">
+  <div class="complete-icon" id="complete-icon">🎯</div>
+  <div class="complete-score" id="complete-score">12/12</div>
+  <div style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;" id="complete-title">Round complete!</div>
+  <div class="complete-msg" id="complete-msg">Well done. On to the next round.</div>
+  <div class="btn-row">
+    <button class="btn dark" id="next-round-btn" onclick="advanceRound()">Next Round →</button>
+  </div>
+</div>
+
+<!-- ─────────────── REFLECTION ───────────────────────── -->
+<div id="reflection-screen" class="screen" style="overflow-y:auto;">
+  <div id="reflection">
+    <div class="reflection-header">
+      <div style="font-size:2.5rem; margin-bottom:0.5rem;">💭</div>
+      <h2>Before the Workshop</h2>
+      <p>Take 3–5 minutes to reflect on these questions. There are no right answers here — use them to prepare your thinking for the session.</p>
+    </div>
+
+    <div class="reflection-card">
+      <div class="q-num">Reflection 1</div>
+      <div class="q-text">The course frames drug discovery as three big questions: <em>What is broken? Can we reach it? Can we fix it well enough?</em> Which of these feels most uncertain or interesting to you — and why?</div>
+      <textarea placeholder="Write your thoughts here…"></textarea>
+    </div>
+
+    <div class="reflection-card">
+      <div class="q-num">Reflection 2</div>
+      <div class="q-text">Think of a disease you know something about. At which stage of the value chain do you think most drug programs fail for that disease — and what kind of data would reduce that risk?</div>
+      <textarea placeholder="Write your thoughts here…"></textarea>
+    </div>
+
+    <div class="reflection-card">
+      <div class="q-num">Reflection 3</div>
+      <div class="q-text">RNA can be targeted earlier in the information chain than proteins. What do you think this changes about the question <em>"Can we reach it?"</em> compared to a small molecule targeting a protein?</div>
+      <textarea placeholder="Write your thoughts here…"></textarea>
+    </div>
+
+    <div class="reflection-card">
+      <div class="q-num">Reflection 4</div>
+      <div class="q-text">Sembragiline hit its target but failed in the clinic. Risdiplam succeeded by building a complete translational chain of evidence. What does this suggest about what "target validation" really means?</div>
+      <textarea placeholder="Write your thoughts here…"></textarea>
+    </div>
+
+    <div class="final-cta">
+      <div class="big-score" id="final-score">—</div>
+      <div class="score-label">Total score across all rounds</div>
+      <p style="font-size:0.85rem; color:var(--muted); max-width:400px; margin:0 auto 1.5rem; line-height:1.6;">
+        Bring your reflections to the workshop — you'll explore these questions in depth with your group.
+      </p>
+      <button class="btn primary-colored" onclick="restartGame()">Play Again</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════
+
+const STAGES = [
+  {
+    id: 's1',
+    num: 1,
+    label: 'Disease Biology',
+    question: 'What is broken — and in whom?',
+    color: '#4f6fa0'
+  },
+  {
+    id: 's2',
+    num: 2,
+    label: 'Target Identification',
+    question: 'Which molecule should we interfere with?',
+    color: '#5a8a6e'
+  },
+  {
+    id: 's3',
+    num: 3,
+    label: 'Modality Selection',
+    question: 'What kind of drug can reach and engage the target?',
+    color: '#8a6e5a'
+  },
+  {
+    id: 's4',
+    num: 4,
+    label: 'Lead Identification',
+    question: 'Does anything actually work in a test?',
+    color: '#7a5a8a'
+  },
+  {
+    id: 's5',
+    num: 5,
+    label: 'Lead Optimisation',
+    question: 'How do we make it better without breaking it?',
+    color: '#8a7a5a'
+  },
+  {
+    id: 's6',
+    num: 6,
+    label: 'Lead Characterisation',
+    question: 'Is there enough evidence to take this into humans?',
+    color: '#5a7a8a'
+  }
+];
+
+const ROUNDS = [
+  // ── ROUND 1: Key Questions ───────────────────────────
+  {
+    badge: 'Round 1 of 3',
+    title: 'Sort the Key Questions',
+    desc: 'Each question below is asked at one specific stage of drug discovery. Drag (or tap) each card to the stage where it belongs.',
+    hint: '💡 Tap a card to select it, then tap a stage to place it. Or drag & drop on desktop.',
+    items: [
+      { id: 'q1', text: 'What is actually wrong — and in whom?', stage: 's1', explanation: 'This is the first question of disease biology — defining who is sick and what the pathology looks like.' },
+      { id: 'q2', text: 'How does the disease progress if left untreated?', stage: 's1', explanation: 'Understanding natural history is essential before you know what "changing the disease" would look like.' },
+      { id: 'q3', text: 'What would it mean to have actually changed the disease?', stage: 's1', explanation: 'Defining success from the disease side anchors everything downstream — what endpoint matters to patients?' },
+      { id: 'q4', text: 'Which molecule is the right one to interfere with?', stage: 's2', explanation: 'Target identification asks: among all molecules implicated in disease, which one should we modulate?' },
+      { id: 'q5', text: 'How do we know modulating this target will actually help?', stage: 's2', explanation: 'Target validation requires evidence that modulation of the chosen molecule changes disease course.' },
+      { id: 'q6', text: 'What happens to a healthy cell if we interfere with this target?', stage: 's2', explanation: 'On-target toxicity risk is assessed at target ID — before any modality choice is made.' },
+      { id: 'q7', text: 'Does the target have a surface we can bind — or do we need to work upstream?', stage: 's3', explanation: 'Tractability assessment is the core of modality selection: can a small molecule bind it, or do we need an ASO to silence the mRNA?' },
+      { id: 'q8', text: 'Can we get the drug to where it needs to go?', stage: 's3', explanation: 'Tissue distribution and delivery strategy are decided during modality selection.' },
+      { id: 'q9', text: 'Is the activity real and specific — or an artefact?', stage: 's4', explanation: 'Counter-screens and selectivity panels confirm that lead hits are genuine and not PAINS or promiscuous binders.' },
+      { id: 'q10', text: 'How potent does a starting compound need to be to be worth pursuing?', stage: 's4', explanation: 'Lead identification sets potency thresholds (IC50/EC50) to filter which hits merit optimization.' },
+      { id: 'q11', text: 'Is the drug safe enough at the dose needed to work?', stage: 's5', explanation: 'In vitro safety (hERG, cytotoxicity, genotoxicity) is optimized during lead optimisation to establish a therapeutic window.' },
+      { id: 'q12', text: 'Do animal results predict what will happen in people?', stage: 's6', explanation: 'Translational validity — the core of lead characterisation — asks whether preclinical PK/PD models predict human outcomes.' }
+    ]
+  },
+
+  // ── ROUND 2: Data Types ──────────────────────────────
+  {
+    badge: 'Round 2 of 3',
+    title: 'Sort the Data Types',
+    desc: 'Each data type below is primarily generated and used at one stage of the value chain. Place it in the right stage.',
+    hint: '💡 Think about when this type of data would first be collected and why.',
+    items: [
+      { id: 'd1', text: 'Epidemiological & natural history data', stage: 's1', explanation: 'Prevalence, incidence, disease trajectory — the foundation of understanding the patient population and unmet need.' },
+      { id: 'd2', text: 'Histopathology data', stage: 's1', explanation: 'Microscopic tissue examination (e.g. amyloid plaques) defines what the disease looks like at a tissue level.' },
+      { id: 'd3', text: 'Human genetic association data (GWAS)', stage: 's2', explanation: 'Genome-wide association studies link gene variants to disease risk, providing genetic evidence for target selection.' },
+      { id: 'd4', text: 'Knockout / knockdown data', stage: 's2', explanation: 'Silencing a gene in cells or animals tests whether that target causally drives disease phenotype.' },
+      { id: 'd5', text: 'Target tractability assessment', stage: 's3', explanation: 'Structural analysis (crystallography, AlphaFold, pocket algorithms) tells you whether a small molecule or ASO is the right modality.' },
+      { id: 'd6', text: 'Comparative modality profiling', stage: 's3', explanation: 'Head-to-head comparison of small molecules, oligonucleotides, and biologics for a given target — a modality selection decision.' },
+      { id: 'd7', text: 'High-throughput screening (HTS) data', stage: 's4', explanation: 'Testing thousands to millions of compounds against the target to identify initial hits — the entry point to lead identification.' },
+      { id: 'd8', text: 'Dose-response curves (IC₅₀ / EC₅₀)', stage: 's4', explanation: 'Quantitative potency at multiple concentrations helps rank hits and set minimum thresholds for optimization.' },
+      { id: 'd9', text: 'Structure-activity relationship (SAR) data', stage: 's5', explanation: 'Paired chemistry and activity data across analogues — the systematic language of lead optimisation.' },
+      { id: 'd10', text: 'In vitro ADME data', stage: 's5', explanation: 'Microsomal stability, permeability, CYP inhibition — optimised during lead optimisation to ensure the drug reaches its target.' },
+      { id: 'd11', text: 'In vivo pharmacokinetic (PK) data', stage: 's6', explanation: 'Plasma and tissue concentration-time profiles in animals — required to bridge to human dosing predictions.' },
+      { id: 'd12', text: 'Regulatory toxicology package (GLP)', stage: 's6', explanation: 'GLP-compliant repeat-dose toxicology in two species — formal requirement before an IND/CTA application.' }
+    ]
+  },
+
+  // ── ROUND 3: Mixed Concepts ──────────────────────────
+  {
+    badge: 'Round 3 of 3',
+    title: 'Sort the Concepts',
+    desc: 'Place each concept, method, or tool at the stage of the value chain where it is most relevant.',
+    hint: '💡 Some concepts span multiple stages — assign them to where they have the most primary impact.',
+    items: [
+      { id: 'c1', text: 'Identifying amyloid plaques in brain tissue', stage: 's1', explanation: 'Histopathology of disease tissue is part of understanding disease biology — defining what is broken at a tissue level.' },
+      { id: 'c2', text: 'CRISPR knockout in cell lines', stage: 's2', explanation: 'Knocking out a gene to test whether it drives disease phenotype is a target identification / validation approach.' },
+      { id: 'c3', text: 'AlphaFold structure prediction of the target protein', stage: 's3', explanation: 'Structural knowledge of the target is used in tractability assessment to decide whether small molecules or other modalities can bind.' },
+      { id: 'c4', text: 'Antisense oligonucleotide (ASO) design using Watson-Crick rules', stage: 's3', explanation: 'ASO design is a modality selection — choosing to target the mRNA rather than the protein, using sequence-based design.' },
+      { id: 'c5', text: 'Counter-screen against off-target proteins', stage: 's4', explanation: 'Selectivity panels run after initial HTS hits to confirm specificity — part of lead identification quality control.' },
+      { id: 'c6', text: 'Measuring SMN2 mRNA production by qPCR', stage: 's5', explanation: 'This proximal pharmacodynamic readout was used in risdiplam lead optimisation to guide SAR and demonstrate on-target effect.' },
+      { id: 'c7', text: 'PET imaging for target occupancy in brain', stage: 's6', explanation: 'Target occupancy measured in vivo by PET is a key translational biomarker used in lead characterisation — and into clinical studies.' },
+      { id: 'c8', text: 'hERG channel assay', stage: 's5', explanation: 'hERG inhibition (cardiac safety risk) is routinely assessed during lead optimisation to flag and eliminate cardiotoxic scaffolds early.' },
+      { id: 'c9', text: 'GWAS linking a SNP variant to disease risk', stage: 's2', explanation: 'Human genetic association data is the gold standard for target identification — genetic validation of the target-disease link.' },
+      { id: 'c10', text: 'PK/PD modelling in animal models', stage: 's6', explanation: 'PK/PD modelling integrates drug exposure with biological effect, supporting dose selection and IND-enabling studies.' },
+      { id: 'c11', text: 'Defining the patient population and clinical endpoint', stage: 's1', explanation: 'Deciding who to treat and how to measure benefit is a disease biology question that shapes the entire program.' },
+      { id: 'c12', text: 'Tissue distribution data showing target expression in CNS', stage: 's3', explanation: 'Where the target is expressed determines delivery strategy — a key input to modality selection, especially for CNS targets.' }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+
+let currentRound = 0;
+let score = 0;
+let totalItems = 0;
+let correctCount = 0;
+let roundItems = [];
+let selectedCard = null;
+let draggedCard = null;
+
+function startRound(roundIdx) {
+  currentRound = roundIdx;
+  selectedCard = null;
+  draggedCard = null;
+  roundItems = shuffle([...ROUNDS[roundIdx].items]);
+
+  showScreen('game-screen');
+
+  const round = ROUNDS[roundIdx];
+  document.getElementById('round-label').textContent = round.badge;
+  document.getElementById('round-meta').textContent = round.title;
+  document.getElementById('round-badge').textContent = round.badge;
+  document.getElementById('round-title').textContent = round.title;
+  document.getElementById('round-desc').textContent = round.desc;
+  document.getElementById('round-hint').innerHTML = round.hint;
+
+  // Reset score for this round
+  correctCount = 0;
+  totalItems = roundItems.length;
+  updateScoreDisplay();
+
+  renderPool();
+  renderStages();
+}
+
+function renderPool() {
+  const pool = document.getElementById('card-pool');
+  pool.innerHTML = '';
+  roundItems.forEach(item => {
+    const card = createCard(item);
+    pool.appendChild(card);
+  });
+}
+
+function createCard(item) {
+  const div = document.createElement('div');
+  div.className = 'item-card';
+  div.id = 'card-' + item.id;
+  div.textContent = item.text;
+  div.dataset.id = item.id;
+  div.dataset.stage = item.stage;
+
+  // Drag events
+  div.draggable = true;
+  div.addEventListener('dragstart', onDragStart);
+  div.addEventListener('dragend', onDragEnd);
+
+  // Tap/click
+  div.addEventListener('click', onCardClick);
+
+  return div;
+}
+
+function renderStages() {
+  const area = document.getElementById('stages-area');
+  area.innerHTML = '';
+  STAGES.forEach(stage => {
+    const col = document.createElement('div');
+    col.className = `stage-col ${stage.id}`;
+    col.id = `stage-col-${stage.id}`;
+
+    col.innerHTML = `
+      <div class="stage-header" style="background:${stage.color}">
+        <div class="stage-num">${stage.num}</div>
+        <span>${stage.label}</span>
+      </div>
+      <div class="stage-question">"${stage.question}"</div>
+      <div class="stage-drop-zone" id="zone-${stage.id}">
+        <div class="drop-placeholder">Drop cards here</div>
+      </div>
+    `;
+
+    // Drop events
+    col.addEventListener('dragover', onDragOver);
+    col.addEventListener('dragleave', onDragLeave);
+    col.addEventListener('drop', onDrop);
+    col.dataset.stage = stage.id;
+
+    // Tap/click
+    col.addEventListener('click', onStageClick);
+
+    area.appendChild(col);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+// DRAG & DROP
+// ═══════════════════════════════════════════════════════
+
+function onDragStart(e) {
+  draggedCard = this;
+  this.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', this.dataset.id);
+}
+
+function onDragEnd(e) {
+  if (draggedCard) draggedCard.classList.remove('dragging');
+  draggedCard = null;
+  document.querySelectorAll('.stage-col').forEach(c => c.classList.remove('drag-over'));
+}
+
+function onDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  const col = this.closest('.stage-col') || this;
+  col.classList.add('drag-over');
+}
+
+function onDragLeave(e) {
+  const col = this.closest('.stage-col') || this;
+  col.classList.remove('drag-over');
+}
+
+function onDrop(e) {
+  e.preventDefault();
+  const col = this.closest('.stage-col') || this;
+  col.classList.remove('drag-over');
+  const itemId = e.dataTransfer.getData('text/plain');
+  const targetStage = col.dataset.stage;
+  if (!itemId || !targetStage) return;
+  placeCard(itemId, targetStage);
+}
+
+// ═══════════════════════════════════════════════════════
+// TAP / CLICK
+// ═══════════════════════════════════════════════════════
+
+function onCardClick(e) {
+  e.stopPropagation();
+  const card = this;
+  if (card.classList.contains('correct') || card.classList.contains('wrong')) return;
+
+  if (selectedCard && selectedCard !== card) {
+    selectedCard.classList.remove('selected');
+  }
+  if (selectedCard === card) {
+    card.classList.remove('selected');
+    selectedCard = null;
+  } else {
+    card.classList.add('selected');
+    selectedCard = card;
+    showToast('Now tap a stage to place it', '');
+  }
+}
+
+function onStageClick(e) {
+  if (!selectedCard) return;
+  const col = this.closest('.stage-col');
+  if (!col) return;
+  const targetStage = col.dataset.stage;
+  const itemId = selectedCard.dataset.id;
+  selectedCard.classList.remove('selected');
+  selectedCard = null;
+  placeCard(itemId, targetStage);
+}
+
+// ═══════════════════════════════════════════════════════
+// CORE LOGIC
+// ═══════════════════════════════════════════════════════
+
+function placeCard(itemId, targetStage) {
+  const item = ROUNDS[currentRound].items.find(i => i.id === itemId);
+  if (!item) return;
+
+  const cardEl = document.getElementById('card-' + itemId);
+  if (!cardEl) return;
+
+  const isCorrect = item.stage === targetStage;
+  const zone = document.getElementById('zone-' + targetStage);
+
+  // Remove placeholder if present
+  const placeholder = zone.querySelector('.drop-placeholder');
+  if (placeholder) placeholder.remove();
+
+  // Create placed card in zone
+  const placed = document.createElement('div');
+  placed.className = 'stage-card ' + (isCorrect ? 'correct' : 'wrong');
+  placed.dataset.itemId = itemId;
+  placed.innerHTML = `
+    <span class="feedback-icon">${isCorrect ? '✓' : '✗'}</span>
+    ${item.text}
+    <div class="explanation">${isCorrect ? item.explanation : '← Should go to: <strong>' + STAGES.find(s=>s.id===item.stage).label + '</strong>. ' + item.explanation}</div>
+  `;
+  zone.appendChild(placed);
+
+  // Hide from pool
+  cardEl.classList.add('placed');
+
+  // Score
+  if (isCorrect) {
+    correctCount++;
+    score++;
+    showToast('Correct! ✓', 'correct-toast');
+  } else {
+    showToast('Not quite — check the explanation below', 'wrong-toast');
+    // If wrong, also place it in the correct zone with a note
+    setTimeout(() => {
+      const correctZone = document.getElementById('zone-' + item.stage);
+      const ph = correctZone.querySelector('.drop-placeholder');
+      if (ph) ph.remove();
+    }, 100);
+  }
+  totalItems = ROUNDS[currentRound].items.length;
+  updateScoreDisplay();
+
+  // Check if round complete
+  const allPlaced = ROUNDS[currentRound].items.every(i => {
+    const el = document.getElementById('card-' + i.id);
+    return el && el.classList.contains('placed');
+  });
+
+  if (allPlaced) {
+    setTimeout(() => showRoundComplete(), 800);
+  }
+}
+
+function updateScoreDisplay() {
+  const placed = ROUNDS[currentRound].items.filter(i => {
+    const el = document.getElementById('card-' + i.id);
+    return el && el.classList.contains('placed');
+  }).length;
+  const pct = totalItems > 0 ? (placed / totalItems) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('score-display').textContent = correctCount + ' / ' + placed;
+}
+
+function showRoundComplete() {
+  const round = ROUNDS[currentRound];
+  const roundCorrect = ROUNDS[currentRound].items.filter(i => {
+    const zone = document.getElementById('zone-' + i.stage);
+    if (!zone) return false;
+    const cards = zone.querySelectorAll('.stage-card.correct');
+    return Array.from(cards).some(c => c.dataset.itemId === i.id);
+  }).length;
+
+  const total = ROUNDS[currentRound].items.length;
+  const pct = Math.round(roundCorrect / total * 100);
+
+  document.getElementById('complete-score').textContent = roundCorrect + ' / ' + total;
+  document.getElementById('complete-icon').textContent = pct === 100 ? '🏆' : pct >= 75 ? '🎯' : pct >= 50 ? '👍' : '📚';
+  document.getElementById('complete-title').textContent = pct === 100 ? 'Perfect round!' : pct >= 75 ? 'Great work!' : pct >= 50 ? 'Good effort!' : 'Keep exploring!';
+
+  const isLast = currentRound === ROUNDS.length - 1;
+  document.getElementById('complete-msg').textContent = isLast
+    ? 'You\'ve completed all sorting rounds. Now take a moment to reflect before the workshop.'
+    : 'Review the feedback in the stage columns, then move to the next round.';
+  document.getElementById('next-round-btn').textContent = isLast ? 'Reflect before the workshop →' : 'Next Round →';
+
+  showScreen('round-complete');
+}
+
+function advanceRound() {
+  if (currentRound < ROUNDS.length - 1) {
+    startRound(currentRound + 1);
+  } else {
+    showReflection();
+  }
+}
+
+function showReflection() {
+  const totalPossible = ROUNDS.reduce((acc, r) => acc + r.items.length, 0);
+  document.getElementById('final-score').textContent = score + ' / ' + totalPossible;
+  showScreen('reflection-screen');
+}
+
+function restartGame() {
+  score = 0;
+  showScreen('welcome');
+}
+
+// ═══════════════════════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════════════════════
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast ' + type;
+  // Force reflow
+  void t.offsetWidth;
+  t.classList.add('show');
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+</script>
+</body>
+</html>
