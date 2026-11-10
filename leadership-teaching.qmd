@@ -13,7 +13,7 @@ Internal training has almost always followed a strategy of raising overall organ
 
 ## Training 'Portfolio':
 
--   Onboarding to the RNAHub (RNAHub Academy, 2022-2024): Constructed (with other senior colleagues) a small curriculum (approximately 3 x 2 hrs…not really enough) that attempts to bring all RNAHub members to basic level of oligonucleotide therapeutics knowledge (scientific mastery), ways we work and organize together (transformation), and our strategy and direction (business purpose). Onboarded a total of about 55 people. Evolved with feedback.
+-   Onboarding to the RNAHub (RNAHub Academy, 2022-2024): Constructed (with other senior colleagues) a small curriculum (approximately 3 x 2 hrs) that attempts to bring all RNAHub members to basic level of oligonucleotide therapeutics knowledge (scientific mastery), ways we work and organize together (transformation), and our strategy and direction (business purpose). Onboarded a total of about 55 people. Evolved with feedback.
 
 -   Internal training sessions at Roche Innovation Center Copenhagen on RNA Biology, basic data science and organizational topics.
 

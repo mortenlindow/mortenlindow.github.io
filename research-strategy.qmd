@@ -3,18 +3,16 @@ title: "Research Strategy"
 format: html
 ---
 
-As a leader for the CPDSE, my main focus is on the development of the center as a whole and its mission. This should remain the leader's main priority for the duration of the center. However as the center becomes robust, evolves and co-leadership truly kicks in (see leadership principles), more effort can be shifted into my professorial research activities.
-
-I am considering two avenues of research:
+Alongside leading CPDSE, I am building research along two avenues:
 
 1.  Enabling Oligonucleotide drug discovery through data and modelling (this document below)
-2.  Drug discovery process modelling and strategy (to be further elaborated)
+2.  Drug discovery process modelling and strategy
 
 # Enabling Open Oligonucleotide Drug Discovery Through Data and Modelling.
 
 The research strategy in the first years will focus on data curation, machine learning, community building, simulations. Several of the envisioned projects will have outcomes both in terms of uncovering basic science and in terms of producing tools, frameworks and models that can be used for teaching and strengthening the oligonucleotide community.
 
-The draft research strategy will be further evolved together with current collaborators, future collaborators inside and outside of the department, and evolving opportunities for grants.
+The strategy evolves together with current and new collaborators inside and outside the department, and with opportunities for funding.
 
 ## Research Strategy Timeline
 

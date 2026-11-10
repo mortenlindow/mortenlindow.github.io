@@ -21,7 +21,7 @@ about:
 
 Since February 2025 I am the leader of the [Center for Pharmaceutical Data Science Education](https://cpdse.dk) and professor at the [Department for Drug Design and Pharmacology at the University of Copenhagen](http://drug.ku.dk). Read one of my pieces on the need for data science integration in pharma [here](https://www.linkedin.com/pulse/days-bridging-gone-now-full-integration-morten-lindow-xlczf/?trackingId=e8iHNR5eRpGgi6l2gO9B8g%3D%3D).
 
-This website is a slight adaptation of **the job application** that landed me this fantastic job. It is only sporadically updated. Please follow me on [LinkedIn](https://linkedin.com/in/mlindow) and the [CPDSE website](https://cpdse.dk) for news and updates.
+Follow me on [LinkedIn](https://linkedin.com/in/mlindow) and the [CPDSE website](https://cpdse.dk) for news and updates.
 
 Briefly about me:
 
