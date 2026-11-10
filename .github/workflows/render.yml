@@ -1,0 +1,32 @@
+# Renders the Quarto site into docs/ (served by GitHub Pages from master:/docs)
+# and commits the result, so docs/ always matches the .qmd sources.
+name: Render site
+
+on:
+  push:
+    branches: ["**"]
+    paths-ignore: ["docs/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: quarto-dev/quarto-actions/setup@v2
+      - run: quarto render
+      - name: Commit rendered site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898333+github-actions[bot]@users.noreply.github.com"
+          git add -A docs
+          if git diff --cached --quiet; then echo "docs/ already up to date"; exit 0; fi
+          git commit -m "Render site [skip ci]"
+          git push

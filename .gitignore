@@ -7,3 +7,5 @@ Gemfile.lock
 /.quarto/
 
 **/*.quarto_ipynb
+.DS_Store
+.Rhistory

@@ -1,6 +1,5 @@
 ---
 title: "Research Strategy"
-author: Morten Lindow
 format: html
 ---
 

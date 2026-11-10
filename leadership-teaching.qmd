@@ -1,10 +1,11 @@
 ---
 title: "Leadership and Teaching"
 format: html
-author: Morten Lindow
 ---
 
-![Figure: Morten’s little leadership model, (adapted from professional agile coach certification). The middle holds core principles that I strive towards to uphold in an organisation. The outer circle has the four roles that we need to consciously shift between, the top quadrants being one-to-many situations vs one-to-one on the bottom. Right is content neutral, while left is where you lead also a content expert. The bottom are the areas to which I can apply the roles. I try to remain conscious about when I apply each role. Trainer/teacher The trainer role is applied when I need to convey learning of content that I master to groups of people that do not yet](leadership-model.png)
+![Morten's little leadership model](leadership-model.png){fig-alt="Leadership model: core principles in the centre, four roles around them, and the areas they apply to."}
+
+My little leadership model (adapted from professional agile coach certification). The middle holds core principles that I strive towards to uphold in an organisation. The outer circle has the four roles that we need to consciously shift between, the top quadrants being one-to-many situations vs one-to-one on the bottom. Right is content neutral, while left is where you lead also a content expert. The bottom are the areas to which I can apply the roles. I try to remain conscious about when I apply each role.
 
 Whenever possible, I use a very interactive and involving type of training, which often surprises people in highly scientific parts of pharma, where the prevalent culture tends to be classical lecture or conference style. I am inspired by the very practical ideas of Bowman, Training from the BACK of the room. When I remember Bowman’s 4Cs (connect, concepts, concrete practice and conclusion) and Six Trumps, my training sessions are usually much better.
 

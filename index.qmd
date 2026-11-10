@@ -1,25 +1,39 @@
 ---
 title: "Morten Lindow"
-number-sections: true
+subtitle: "Professor · Leader of the Center for Pharmaceutical Data Science Education"
+toc: false
+about:
+  template: trestles
+  image: Morten_Lindow.jpg
+  image-shape: rounded
+  image-width: 15em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/mlindow
+    - icon: mortarboard
+      text: Scholar
+      href: https://scholar.google.dk/citations?user=FCh7IpsAAAAJ&hl=da
+    - icon: github
+      text: GitHub
+      href: https://github.com/mortenlindow
 ---
 
-![Morten Lindow (photo credit Lisbeth Lassen)](Morten_Lindow.jpg)
-
-Since February 2025 I am the leader of the [Center for Pharmaceutical Data Science Education](https://cpdse.dk) and professor at the [Deparment for Drug Design and Pharmacology at the University of Copenhagen](http://drug.ku.dk). Read one of my pieces on the need for data science integration in pharma [here](https://www.linkedin.com/pulse/days-bridging-gone-now-full-integration-morten-lindow-xlczf/?trackingId=e8iHNR5eRpGgi6l2gO9B8g%3D%3D).
+Since February 2025 I am the leader of the [Center for Pharmaceutical Data Science Education](https://cpdse.dk) and professor at the [Department for Drug Design and Pharmacology at the University of Copenhagen](http://drug.ku.dk). Read one of my pieces on the need for data science integration in pharma [here](https://www.linkedin.com/pulse/days-bridging-gone-now-full-integration-morten-lindow-xlczf/?trackingId=e8iHNR5eRpGgi6l2gO9B8g%3D%3D).
 
 This website is a slight adaptation of **the job application** that landed me this fantastic job. It is only sporadically updated. Please follow me on [LinkedIn](https://linkedin.com/in/mlindow) and the [CPDSE website](https://cpdse.dk) for news and updates.
 
 Briefly about me:
 
--   17 yrs experience and track record of turning ideas into drug candidates. Leading and supporting roles in \>40 oligonucleotide drug discovery projects: 5 reached clinical stages, 2 in phase 2, 2 programs with novel conjugate targeting moeities reaching clinical development
+-   17 yrs experience and track record of turning ideas into drug candidates. Leading and supporting roles in \>40 oligonucleotide drug discovery projects: 5 reached clinical stages, 2 in phase 2, 2 programs with novel conjugate targeting moieties reaching clinical development
 
--   One of the pioneers behind computational design of oligonucleotide drugs. Structure-activity-relationships, specificity, kinetic models and practical implementation in drug discovery. See @sec-research below.
+-   One of the pioneers behind computational design of oligonucleotide drugs. Structure-activity-relationships, specificity, kinetic models and practical implementation in drug discovery. See [Research](#sec-research) below.
 
--   Tireless and often successful proponent of integration between data science and drug discovery: From data-geeks to drivers of RNA-therapy projects in Santaris and RICC, digital strategy for Roche pRED, bioinformatics integration into Research in Lundbeck and organizational design for data and analytics in Roche pRED, RNAHub as a fully integrated cross-functional unit in Roche and now Center for Pharmaceutical Data Science Education. See @sec-data-science below.
+-   Tireless and often successful proponent of integration between data science and drug discovery: From data-geeks to drivers of RNA-therapy projects in Santaris and RICC, digital strategy for Roche pRED, bioinformatics integration into Research in Lundbeck and organizational design for data and analytics in Roche pRED, RNAHub as a fully integrated cross-functional unit in Roche and now Center for Pharmaceutical Data Science Education. See [Data science](#sec-data-science) below.
 
--   Experience and passion for leading and evolving progressive and human centered ways of working and organizing together in scientific enterprises: project maturity and innovation leadership in RICC, ReimagineOurContribution in Roche, RNAHub in Roche and CPDSE's way of working. See @sec-org-dev-leadership below.
+-   Experience and passion for leading and evolving progressive and human centered ways of working and organizing together in scientific enterprises: project maturity and innovation leadership in RICC, ReimagineOurContribution in Roche, RNAHub in Roche and CPDSE's way of working. See [Leadership](#sec-org-dev-leadership) below.
 
--   Entrepreneurial ecosystem and community creator: Nordic Nucleic Acid Based Medicine Network (founder and driver), Danish RNA Society (co-founder and former board member), Beers Data and Drugs, Biogeeks, various industry-academia advisory boards, leading roles in 4 public-private founded partnerships, various non-professional NGOs. See @sec-ecosystems-communities below.
+-   Entrepreneurial ecosystem and community creator: Nordic Nucleic Acid Based Medicine Network (founder and driver), Danish RNA Society (co-founder and former board member), Beers Data and Drugs, Biogeeks, various industry-academia advisory boards, leading roles in 4 public-private founded partnerships, various non-professional NGOs. See [Ecosystem and community](#sec-ecosystems-communities) below.
 
 # Research: Oligonucleotide design and discovery {#sec-research}
 
@@ -38,13 +52,13 @@ View full publication list on [Google Scholar](https://scholar.google.dk/citatio
 
 -   Promoted and coached OligoLoop (2022-2024, sponsor, RNAHub) - a setup and team aiming for 2-week cycles from design of oligos, synthesis in small scale, screening in cells with RNASeq and learning from the data. Then iterate.
 
--   Embedding of 3 data engineers, 3 data scientists and 3 bioinformaticians full-time into the cross-functional RNAHub with biologists and chemists (2022-2024, RNAHub lead). Spreading and providing data literacy and higher quality experiments and analysis.  ASFAIK, this is so far the highest level of overall data literacy in any Roche end-to-end discovery team.
+-   Embedding of 3 data engineers, 3 data scientists and 3 bioinformaticians full-time into the cross-functional RNAHub with biologists and chemists (2022-2024, RNAHub lead). Spreading and providing data literacy and higher quality experiments and analysis.  AFAIK, this is so far the highest level of overall data literacy in any Roche end-to-end discovery team.
 
 -   Roche Pharma Research and Early Development (pRED) Digital Strategy (2017, member). Strategy team member for global Roche Strategy, spanning from ML for qSAR, FAIR-data, omics, stratification, companion-diagnostics and more. Spawning numerous very costly workstreams. Far too big and too siloed in their own digital world, so my impact was unfortunately minimal.
 
 -   Design team for Data and Analytics organization in pRED (2021, member). Org-design led to a ‘hub and spoke’ org-model, where ‘spokes’ should be embedded with the chemists and biologists. Good direction, but not yet fully implemented.
 
--   Expanded and shifted bioinformatics and data science, from a heavy clinical development anchoring into early research at Lundbeck (2018-2020, director). Formed and led target decision support teamand new modalities assessment team.
+-   Expanded and shifted bioinformatics and data science, from a heavy clinical development anchoring into early research at Lundbeck (2018-2020, director). Formed and led target decision support team and new modalities assessment team.
 
 -   Bioinformatics group in Santaris (2008-2014, director): shift bioinformaticians from tool-builders and service providers to (co-) leaders of discovery projects.
 
@@ -83,3 +97,5 @@ Corporate strategy and reorganizations:
 -   Lindow Bioconsult (founder and consultant, 2012-2015)
 
 -   Biogeeks bioinformatics consultancy collective (2008-2011)
+
+[Photo: Lisbeth Lassen]{.photo-credit}

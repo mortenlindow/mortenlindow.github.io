@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+// Accent: deep petrol. One colour, used for links, navbar highlight and callouts.
+$primary: #1f6f78;
+$link-color: $primary;
+$navbar-bg: #ffffff;
+$navbar-fg: #33424a;
+$navbar-hl: $primary;
+$body-color: #26323a;
+$headings-color: #14252c;
+$font-family-sans-serif: "Source Sans 3", -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "Source Serif 4", Georgia, serif;
+$headings-font-weight: 600;
+$footer-bg: #f4f7f7;
+
+/*-- scss:rules --*/
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap");
+
+.navbar { border-bottom: 1px solid rgba(0, 0, 0, 0.06); }
+h1, h2, h3 { letter-spacing: -0.01em; }
+h2 { margin-top: 2.2rem; padding-bottom: 0.3rem; border-bottom: 2px solid rgba($primary, 0.25); }
+a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.about-entity .about-image { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12); }
+.about-entity .about-link { border-color: $primary !important; color: $primary !important; }
+.about-entity .about-link:hover { background: $primary; color: #fff !important; }
+.lead-in { font-size: 1.2rem; line-height: 1.55; }
+.photo-credit { font-size: 0.8rem; opacity: 0.7; }
